@@ -6,8 +6,13 @@ use App\Exports\ExportMahasiswa;
 use App\Imports\ImportMahasiswa;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Http\Requests;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Excel;
+use Illuminate\Support\Facades\Response;
+use PDF;
 class MahasiswaController extends Controller
 {
     /**
@@ -20,7 +25,7 @@ class MahasiswaController extends Controller
         //datas sorted from status == Belum Disetujui first then Disetujui  
         $datas = Mahasiswa::orderByRaw('FIELD(status, "Belum Disetujui", "Disetujui")')->get();
         $angkatan="";
-        return view('auth.mahasiswa.index', compact('datas','angkatan'));
+        return view('auth.mahasiswa.index', compact('datas','angkatan',));
 
 
     }
@@ -85,10 +90,24 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Mahasiswa::findOrfail($id);
-        $data->update(($request->all()));
-        Alert::success('Selamat, Data Berhasil Dirubah!');
-        return redirect()->route('mahasiswa.index');
+        $path = Storage::putFileAs('public/irs', $request->file('irs'), Str::slug(auth()->user()->nipnim).'-'.'irs'.'.'.$request->file('irs')->extension());
+        //if role == mahasiswa
+        if(auth()->user()->role == 'mahasiswa'){
+            $data = Mahasiswa::findOrfail($id);
+            $data->update([
+                'irs' => $path,
+                'sks' => $request->sks,
+            ]);
+                Alert::success('Selamat, Data Berhasil Dirubah!');
+                return redirect()->route('mahasiswa.index');
+        }
+        else{
+            $data = Mahasiswa::findOrfail($id);
+            $data->update($request->all());
+            Alert::success('Selamat, Data Berhasil Dirubah!');
+            return redirect()->route('mahasiswa.index');
+        }
+
         
     }
 
@@ -121,6 +140,23 @@ class MahasiswaController extends Controller
     public function export()
     {
         return Excel::download(new ExportMahasiswa, 'mahasiswa.xlsx');
+    }
+
+    //function to open pdf in browser
+    public function oopenPdf($id)
+    {
+        $path = $id;
+        return response()->file(public_path("storage/irs/$path"));
+    }
+//laravel response file pdf with header
+    public function openPdf($id)
+    {
+        $path = $id;
+        $file = ("storage/irs/$path");
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::download($file, 'irs.pdf', $headers);
     }
 
 }

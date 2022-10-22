@@ -12,6 +12,11 @@
 
         {{-- Custom left links --}}
         @yield('content_top_nav_left')
+        <div class="d-flex align-items-center justify-content-between">
+  <a href="home" class="logo d-flex align-items-center">
+    <span class="d-none d-lg-block">Akademi Unggulan</span>
+  </a>
+</div>
     </ul>
 
     {{-- Navbar right links --}}

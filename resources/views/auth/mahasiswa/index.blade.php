@@ -50,7 +50,11 @@
                 <td>{{$data->nama}}</td>
                 <td>{{$data->angkatan}}</td>
                 <td>{{$data->jenis_kelamin}}</td>
-                <td>{{$data->irs}}</td>
+                <td>
+                    @if($data->irs != null)
+                        <a class="btn btn-sm btn-info shadow" href="{{route('mahasiswa.openPdf', $data->irs)}}" role="button">Lihat</a>
+                    @endif    
+                </td>
                 <td>@php
                     if ($data->link_skripsi != null){
                         echo('<a class="btn btn-sm btn-info shadow" href='.$data->link_skripsi.' role="button">Lihat</a>');

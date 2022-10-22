@@ -16,7 +16,7 @@
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        
         {{-- Navbar collapsible menu --}}
         <div class="collapse navbar-collapse order-3" id="navbarCollapse">
             {{-- Navbar left links --}}
@@ -28,6 +28,11 @@
                 @yield('content_top_nav_left')
             </ul>
         </div>
+        <div class="d-flex align-items-center justify-content-between">
+  <a href="dashboard_mahasiswa.php" class="logo d-flex align-items-center">
+    <span class="d-none d-lg-block">Akademi Unggulan</span>
+  </a>
+</div>
 
         {{-- Navbar right links --}}
         <ul class="navbar-nav ml-auto order-1 order-md-3 navbar-no-expand">

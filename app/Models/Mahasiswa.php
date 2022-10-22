@@ -15,6 +15,7 @@ class Mahasiswa extends Model
         'angkatan',
         'jenis_kelamin',
         'irs',
+        'sks',
         'khs',
         'status_pkl',
         'status_skripsi',

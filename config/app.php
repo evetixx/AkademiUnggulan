@@ -183,6 +183,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Davcpas1234\LaravelPdfViewer\LaravelPdfViewerServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -212,6 +214,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
