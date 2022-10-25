@@ -122,18 +122,18 @@
                     <li class="list-inline-item px-5" style="border-right: 1px solid rgb(185, 185, 185);">
                       <span class="text-muted">Angkatan</span>
                       <span class="border-right-1"></span>
-                      <h3 class="block">20XX</h3>
+                      <h3 class="block">20{{$datamhs->angkatan}}</h3>
                     </li>
 
                     <li class="list-inline-item px-5" style="border-right: 1px solid rgb(185, 185, 185);">
                       <span class="text-muted">Semester Studi</span>
-                      <h3 class="block">X</h3>
+                      <h3 class="block">{{$datamhs->semester}}</h3>
                     </li>
 
                     <li class="list-inline-item pl-2">
                       <span class="text-muted">Status Akademik</span>
                       <h3 class="block">
-                        <span class="badge bg-secondary">AKTIF</span>
+                        <span class="badge bg-secondary">{{$datamhs->status_mhs}}</span>
                       </h3>
                     </li>
 
@@ -180,7 +180,7 @@
                             @if($datamhs->irs == null)
                             <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
                             @else
-                            <span class="small badge badge-pill bg-success font-size: -5;">Sudah</span>
+                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: 1">Sudah</span>
                             @endif
                         </h6>
                             @if($datamhs->irs == null)
@@ -198,7 +198,7 @@
                 <div class="modal fade" id="entryIRS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="{{route('mahasiswa.update', $datamhs->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('mahasiswa.updateirs', $datamhs->nim)}}" method="POST" enctype="multipart/form-data">
                             {{csrf_field() }}
                             {{method_field('PUT')}}
                       <div class="modal-header">
@@ -235,31 +235,33 @@
             <div class="modal fade" id="entryKHS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <form action="" method="POST">
+                  <form action="{{route('mahasiswa.updatekhs', $datamhs->id)}}" method="POST" enctype="multipart/form-data">
+                            {{csrf_field() }}
+                            {{method_field('PUT')}}
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Entry Hasil KHS</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Upload KHS semester ini</label>
-                      <input class="form-control" type="file" id="formFile">
+                      <label for="khs" class="form-label">Upload KHS semester ini</label>
+                      <input class="form-control" type="file" id="khs" name="khs">
                     </div>
                     <div class="" style="font-size: 15px;">
                       <div>Format: .pdf</div>
                       <div>Max file size: 512kb</div>
                     </div><br>
                     <div class="form-group">
-                      Jumlah SKS yang diambil
+                      Jumlah SKS keseluruhan
                       <div class="col-md-2">
                         <style>input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}</style>
-                        <input type="number" onkeydown="return event.keyCode !== 69" id="jumlahSKS" class="form-control someInput" placeholder="" min="0" max="24" aria-label="Email" aria-describedby="basic-addon1">
+                        <input type="number" onkeydown="return event.keyCode !== 69" id="sksk" class="form-control someInput" placeholder="" min="0" max="200" aria-label="Email" aria-describedby="basic-addon1">
                      </div>      
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
                   </form>
                 </div>
@@ -269,7 +271,9 @@
             <!-- Entry PKL Card -->
             <div class="col-md-6">
               <div class="card info-card sales-card">
+                @if($datamhs->semester>4)
                 <button type="button" data-bs-toggle="modal" data-bs-target="#entryPKL" style="border: none; background-color: white;">
+                @endif
                 <div class="card-body">
                   <h5 class="card-title"><span></span></h5>
 
@@ -278,9 +282,21 @@
                       <i class="bi bi-person-square"></i>
                     </div>
                     <div class="ps-2">
-                      <h6>ENTRY PKL</h6>
+                      <h6>ENTRY PKL
+                        @if($datamhs->semester<5)
+                        </h6>
+                        <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
+                        @else
+                        @if($datamhs->link_pkl==null)
+                        <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
+                        @else
+                        <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
+                        @endif
+                        @endif
+                      </>
+
                       <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
-                      <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
+
                     </div>
     
                   </div>
@@ -294,24 +310,34 @@
             <div class="modal fade" id="entryPKL" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <form action="" method="POST">
+                  <form action="{{route('mahasiswa.updatepkl', $datamhs->id)}}" method="POST" enctype="multipart/form-data">
+                            {{csrf_field() }}
+                            {{method_field('PUT')}}
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Entry Progress PKL</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Upload File Progress PKL Anda</label>
-                      <input class="form-control" type="file" id="formFile">
+                      <label for="pkl" class="form-label">Upload File Progress PKL Anda</label>
+                      <input class="form-control" type="file" id="pkl" name="pkl">
                     </div>
                     <div class="" style="font-size: 15px;">
                       <div>Format: .pdf</div>
                       <div>Max file size: 512kb</div>
                     </div><br>
+                    <div class="form-group">
+                        <label for="pkl">Status PKL</label>
+                        <select name="status_pkl" id="status_pkl">
+                        <option value = "Belum" @if($datamhs->status_pkl == 'Belum') selected @endif>Belum</option>
+                        <option value = "Selesai" @if($datamhs->status_pkl == 'Selesai') selected @endif>Selesai</option>
+                        <option value = "Sedang" @if($datamhs->status_pkl == 'Sedang') selected @endif>Sedang</option>
+                        </select>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
                   </form>
                 </div>
@@ -335,9 +361,16 @@
                         <i class="bi bi-card-list"></i>
                       </div>
                       <div class="ps-2">
-                        <h6>ENTRY KHS</h6>
-                        <span class="text-danger small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-danger small pt-2 ps-1">Harap Entry KHS</span>
-  
+                        <h6>ENTRY KHS
+                        @if($datamhs->khs == null)
+                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
+                            @else
+                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5;">Sudah</span>
+                            @endif
+                        </h6>
+                            @if($datamhs->khs == null)
+                            <span class="text-danger small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-danger small pt-2 ps-1">Harap Entry KHS</span>
+                            @endif
                       </div>
                     </div>
 
@@ -350,7 +383,9 @@
            <!-- Entry Skripsi Card -->
            <div class="col-md-6">
             <div class="card info-card sales-card">
+              @if($datamhs->semester>6)
               <button type="button" data-bs-toggle="modal" data-bs-target="#entrySkripsi" style="border: none; background-color: white;">
+              @endif
               <div class="card-body">
                 <h5 class="card-title"><span></span></h5>
 
@@ -360,7 +395,15 @@
                   </div>
                   <div class="ps-2">
                     <h6>ENTRY SKRIPSI</h6>
+                    @if($datamhs->semester<7)
                     <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
+                    @else
+                    @if($datamhs->skripsi!=null)
+                    <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
+                    @else
+                    <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
+                    @endif
+                    @endif
 
                   </div>
                 </div>
@@ -375,15 +418,17 @@
             <div class="modal fade" id="entrySkripsi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <form action="" method="POST">
+                  <form action="{{route('mahasiswa.updateskripsi', $datamhs->id)}}" method="POST" enctype="multipart/form-data">
+                            {{csrf_field() }}
+                            {{method_field('PUT')}}
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Entry Skripsi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Upload File Skripsi Anda</label>
-                      <input class="form-control" type="file" id="formFile">
+                      <label for="skripsi"  class="form-label">Upload File Skripsi Anda</label>
+                      <input class="form-control" type="file" id="skripsi" name="skripsi">
                     </div>
                     <div class="" style="font-size: 15px;">
                       <div>Format: .pdf</div>
@@ -398,14 +443,24 @@
                     <div class="form-group py-2">
                       Lama Studi (Jumlah Semester)
                       <div class="col-md-2">
+                        
                         <style>input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}</style>
                         <input type="number" onkeydown="return event.keyCode !== 69" id="LamaStudi" class="form-control someInput" placeholder="" min="0" max="15" aria-label="Semester" aria-describedby="basic-addon1">
-                     </div>      
+                     </div>
+                  <label for="skripsi">Status skripsi</label>
+                    <div class="form-group">
+                      <label for="jenis">Status Skripsi</label>
+                      <select name="status_skripsi" id="status_skripsi">
+                      <option value = "Belum" @if($datamhs->status_skripsi == 'Belum') selected @endif>Belum</option>
+                      <option value = "Selesai" @if($datamhs->status_skripsi =='Selesai') selected @endif>Selesai</option>
+                      <option value = "Sedang" @if($datamhs->status_skripsi == 'Sedang') selected @endif>Sedang</option>
+                    </select>
+                    </div>      
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
                   </form>
                 </div>

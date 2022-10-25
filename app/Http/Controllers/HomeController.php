@@ -63,13 +63,24 @@ class HomeController extends Controller
         //make variable to return teh value ofdosen_wali where user name = nama 
         $dosen_wali = Mahasiswa::select('dosen_wali')->where('nama',Auth::user()->name)->pluck('dosen_wali');
         $datamhs = Mahasiswa::where('nama', Auth::user()->name)->first();
+        $alamatmhs = Mahasiswa::select('alamat')->where('nama',Auth::user()->name)->pluck('alamat');
         //if role == mahasiswa view homemhs
         if(Auth::user()->role == 'mahasiswa'){
+            if ($datamhs->alamat == null){
+                return redirect()->route('profile');}
+            else{
             return view('homemhs', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
+            }
         }
         //if role == doswal view home
         if(Auth::user()->role == 'doswal'){
             return view('home', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
+        }
+        if(Auth::user()->role == 'operator'){
+            return view('homeoperator', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
+        }
+        if(Auth::user()->role == 'departemen'){
+            return view('homedpt', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
         }
         
     }

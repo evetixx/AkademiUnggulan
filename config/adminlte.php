@@ -307,6 +307,7 @@ return [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+            
         ],
         [
             'text' => 'change_password',
@@ -316,22 +317,45 @@ return [
         [
             'text'    => 'Master Mahasiswa',
             'icon'    => 'fas fa-fw fa-book',
+            'can' => ['doswal','departemen'],
             'submenu' => [
                 [
                     'text'    => 'Data Mahasiswa',
+                    'can' => ['doswal'],
                     'url'     => '#',
                     'submenu' => [
                         [
                             'text' => 'Upload Data',
+                            'can' => ['doswal'],
                             'url'  => '/mahasiswa/create',
                         ],
                         [
                             'text' => 'Master Data',
                             'url'  => '/mahasiswa',
                         ],
+                        [
+                            'text' => 'Status Mahasiswa',
+                            'url'  => '/status',
+                        ],
+                        ]
+                    ],
+                [
+                    'text'    => 'Progress Mahasiswa',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'PKL',
+                            'url'  => '/pkl',
+                    ],
+                        [
+                            'text' => 'Skripsi',
+                            'url'  => '/skripsi',
+                        ],
+                        
                     ],
                 ],
             ],
+            
         ],
     ],
 
@@ -355,6 +379,7 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+        
     ],
 
     /*

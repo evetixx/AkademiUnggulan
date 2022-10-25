@@ -19,7 +19,7 @@ class Role
         if ($request->user()->role == $role) {
             return $next($request);
         }
-        return redirect()->to(route('login'));
+        abort(403, 'Anda tidak memiliki hak mengakses laman tersebut!');
 
         
     }

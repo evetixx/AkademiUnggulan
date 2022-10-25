@@ -52,27 +52,23 @@
                 <td>{{$data->jenis_kelamin}}</td>
                 <td>
                     @if($data->irs != null)
-                        <a class="btn btn-sm btn-info shadow" href="{{route('mahasiswa.openPdf', $data->irs)}}" role="button">Lihat</a>
+                        <a class="btn btn-sm btn-info shadow" href="{{route('mahasiswa.openirs', $data->irs)}}" target="_blank" rel="noopener noreferrer" role="button">Lihat</a>
                     @endif    
                 </td>
-                <td>@php
-                    if ($data->link_skripsi != null){
-                        echo('<a class="btn btn-sm btn-info shadow" href='.$data->link_skripsi.' role="button">Lihat</a>');
-                    };
-                    @endphp</td>
+                <td>
+                    @if($data->khs != null)
+                        <a class="btn btn-sm btn-info shadow" href="{{route('mahasiswa.openkhs', $data->khs)}}" target="_blank" rel="noopener noreferrer" role="button">Lihat</a>
+                    @endif
+                </td>
                 <td>{{$data->status_pkl}}
-                    @php
-                    if ($data->link_skripsi != null){
-                        echo('<a class="btn btn-sm btn-info shadow" href='.$data->link_skripsi.' role="button">Lihat</a>');
-                    };
-                    @endphp
+                    @if($data->link_pkl != null)
+                        <a class="btn btn-sm btn-info shadow" href="{{route('mahasiswa.openpkl', $data->link_pkl)}}" target="_blank" rel="noopener noreferrer" role="button">Lihat</a>
+                    @endif
                 </td>
                 <td>{{$data->status_skripsi}}
-                    @php
-                    if ($data->link_skripsi != null){
-                        echo('<a class="btn btn-sm btn-info shadow" href='.$data->link_skripsi.' role="button">Lihat</a>');
-                    };
-                    @endphp
+                    @if ($data->link_skripsi != null)
+                        <a class="btn btn-sm btn-info shadow" href="{{route('mahasiswa.openskripsi', $data->link_skripsi)}}" target="_blank" rel="noopener noreferrer" role="button">Lihat</a>
+                    @endif
                 </td>
                 <td>
                     @if ($data->status == "Belum Disetujui")

@@ -16,6 +16,7 @@ class Mahasiswa extends Model
         'jenis_kelamin',
         'irs',
         'sks',
+        'sksk',
         'khs',
         'status_pkl',
         'status_skripsi',
@@ -23,5 +24,8 @@ class Mahasiswa extends Model
         'link_skripsi',
         'link_khs',
         'link_pkl',
+        'tanggal sidang',
+        'alamat',
+        'no_hp',
     ];
 }
