@@ -45,12 +45,23 @@
 
     <div class="pagetitle">
       <h1>Profil</h1>
+
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard_mahasiswa.php">Home</a></li>
           <li class="breadcrumb-item active">Profil</li>
         </ol>
       </nav>
+  @if (session('status'))
+    <div class="alert alert-danger">
+        {{ session('status') }}
+    </div>
+  @endif
+    @if (session('statussukses'))
+    <div class="alert alert-success">
+        {{ session('statussukses') }}
+    </div>
+  @endif
     </div><!-- End Page Title -->
 
     <section class="section profile">
@@ -88,8 +99,9 @@
 
               </ul>
               <div class="tab-content pt-2">
-
-              <form action="{{route('profile.update',$datamhs->nim)}}" method="POST">
+            
+            <div class="tab-pane fade show active profile-overview" id="profile-overview"> 
+            <form action="{{route('profile.update',$datamhs->nim)}}" method="POST">
             {{csrf_field() }}
             {{method_field('PUT')}}
             <div class="form-group">
@@ -120,6 +132,31 @@
             @endif
 
             <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')">Ubah</button>
+            </form>
+            </div>
+            <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <!-- Change Password Form -->
+                  <form action="{{route('password.update',$datamhs->nim)}}" method="POST">
+                              {{csrf_field() }}
+            {{method_field('PUT')}}  
+                  <div class="row mb-3">
+                      <label for="password" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control" id="password">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="password_confirmation" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password_confirmation" type="password" class="form-control" id="password_confirmation">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                  </form><!-- End Change Password Form -->
 
                 </div>
 

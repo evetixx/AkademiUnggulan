@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \App\Http\Middleware\Role::class,
         'open.pdf' => \App\Http\Middleware\OpenPdfInBrowser::class,
+        'exclude' => \App\Http\Middleware\exclude::class,
     ];
 }

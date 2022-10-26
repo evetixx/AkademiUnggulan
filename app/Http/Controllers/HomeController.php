@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\User;
+use Hash;
 use App\Charts\SampleChart;
+use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 
 class HomeController extends Controller
@@ -64,10 +67,12 @@ class HomeController extends Controller
         $dosen_wali = Mahasiswa::select('dosen_wali')->where('nama',Auth::user()->name)->pluck('dosen_wali');
         $datamhs = Mahasiswa::where('nama', Auth::user()->name)->first();
         $alamatmhs = Mahasiswa::select('alamat')->where('nama',Auth::user()->name)->pluck('alamat');
+        $datauser = User::where('name', Auth::user()->name)->first();
         //if role == mahasiswa view homemhs
         if(Auth::user()->role == 'mahasiswa'){
-            if ($datamhs->alamat == null){
-                return redirect()->route('profile');}
+            if (Hash::check($datamhs->nim,$datauser->password)){
+                Alert::error('Gagal', 'Ubah data diri dan password anda');
+                return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
             else{
             return view('homemhs', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
             }

@@ -25,6 +25,8 @@ class ImportMahasiswa implements ToModel, WithHeadingRow, WithValidation, SkipsO
         return [new Mahasiswa([
             'nim' => $row['nim'],
             'nama' => $row['nama'],
+            'semester' => $row['semester'],
+            'dosen_wali' => $row['dosen_wali'],
             'angkatan' => $row['angkatan'],
             'jenis_kelamin' => $row['jenis_kelamin'],
             'status_pkl' => 'Belum',
@@ -37,6 +39,7 @@ class ImportMahasiswa implements ToModel, WithHeadingRow, WithValidation, SkipsO
             'email' => $row['nim'].'@student.akdung.ac.id',
             'password' => Hash::make($row['nim']),
             'role' => 'mahasiswa',
+            'nipnim' => $row['nim'],
         ])];
     }
     public function rules(): array

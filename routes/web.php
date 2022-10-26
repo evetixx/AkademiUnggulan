@@ -17,32 +17,25 @@ use App\Http\Controllers\MahasiswaController;
 Route::get('/r', function () {
     return view('welcome');
 });
-Route::get('/download/{irs}',[MahasiswaController::class,'openirs'])->name('mahasiswa.openirs')->middleware(['auth','role:doswal']);
-Route::get('/download/{irs}',[MahasiswaController::class,'openirs'])->name('mahasiswa.openirs')->middleware(['auth','role:departemen']);
-Route::get('/downloads/{khs}',[MahasiswaController::class,'openkhs'])->name('mahasiswa.openkhs')->middleware(['auth','role:doswal']);
-Route::get('/downloads/{khs}',[MahasiswaController::class,'openkhs'])->name('mahasiswa.openkhs')->middleware(['auth','role:departemen']);
-Route::get('/downloadss/{skripsi}',[MahasiswaController::class,'openskripsi'])->name('mahasiswa.openskripsi')->middleware(['auth','role:doswal']);
-Route::get('/downloadss/{skripsi}',[MahasiswaController::class,'openskripsi'])->name('mahasiswa.openskripsi')->middleware(['auth','role:departemen']);
-Route::get('/downloadsss/{pkl}',[MahasiswaController::class,'openpkl'])->name('mahasiswa.openpkl')->middleware(['auth','role:doswal']);
-Route::get('/downloadsss/{pkl}',[MahasiswaController::class,'openpkl'])->name('mahasiswa.openpkl')->middleware(['auth','role:departemen']);
-Route::get('/pkl/{id}',[MahasiswaController::class,'showpkl'])->name('mahasiswa.showpkl')->middleware(['auth','role:doswal']);
-Route::get('/pkl/{id}',[MahasiswaController::class,'showpkl'])->name('mahasiswa.showpkl')->middleware(['auth','role:departemen']);
-Route::post('/pkl/search',[MahasiswaController::class,'showpklajax'])->name('mahasiswa.showpklajax')->middleware(['auth','role:doswal']);
-Route::post('/pkl/search',[MahasiswaController::class,'showpklajax'])->name('mahasiswa.showpklajax')->middleware(['auth','role:departemen']);
-Route::get('/chart/pkl',[MahasiswaController::class,'chartpkl'])->name('mahasiswa.chartpkl')->middleware(['auth','role:doswal']);
-Route::get('/chart/pkl',[MahasiswaController::class,'chartpkl'])->name('mahasiswa.chartpkl')->middleware(['auth','role:departemen']);
-Route::get('/chart/skripsi',[MahasiswaController::class,'chartskripsi'])->name('mahasiswa.chartskripsi')->middleware(['auth','role:doswal']);
-Route::get('/chart/skripsi',[MahasiswaController::class,'chartskripsi'])->name('mahasiswa.chartskripsi')->middleware(['auth','role:departemen']);
-Route::get('/chart/status',[MahasiswaController::class,'chartstatus'])->name('mahasiswa.chartstatus')->middleware(['auth','role:doswal']);
-Route::get('/chart/status',[MahasiswaController::class,'chartstatus'])->name('mahasiswa.chartstatus')->middleware(['auth','role:departemen']);
-Route::get('/skripsi/{id}',[MahasiswaController::class,'showskripsi'])->name('mahasiswa.showskripsi')->middleware(['auth','role:doswal']);
-Route::get('/skripsi/{id}',[MahasiswaController::class,'showskripsi'])->name('mahasiswa.showskripsi')->middleware(['auth','role:departemen']);
-Route::post('/skripsi/search',[MahasiswaController::class,'showskripsiajax'])->name('mahasiswa.showskripsiajax')->middleware(['auth','role:doswal']);
-Route::post('/skripsi/search',[MahasiswaController::class,'showskripsiajax'])->name('mahasiswa.showskripsiajax')->middleware(['auth','role:departemen']);
-Route::get('/status/{id}',[MahasiswaController::class,'showstatus'])->name('mahasiswa.showstatus')->middleware(['auth','role:doswal']);
-Route::get('/status/{id}',[MahasiswaController::class,'showstatus'])->name('mahasiswa.showstatus')->middleware(['auth','role:departemen']);
-Route::post('/status/search',[MahasiswaController::class,'showstatusajax'])->name('mahasiswa.showstatusajax')->middleware(['auth','role:doswal']);
-Route::post('/status/search',[MahasiswaController::class,'showstatusajax'])->name('mahasiswa.showstatusajax')->middleware(['auth','role:departemen']);
+
+Route::group(['middleware' => ['exclude:mahasiswa']], function () {
+        Route::get('/download/{irs}',[MahasiswaController::class,'openirs'])->name('mahasiswa.openirs');
+        Route::get('/downloads/{khs}',[MahasiswaController::class,'openkhs'])->name('mahasiswa.openkhs');
+        Route::get('/downloadss/{skripsi}',[MahasiswaController::class,'openskripsi'])->name('mahasiswa.openskripsi');
+        Route::get('/downloadsss/{pkl}',[MahasiswaController::class,'openpkl'])->name('mahasiswa.openpkl');
+        Route::get('/pkl/{id}',[MahasiswaController::class,'showpkl'])->name('mahasiswa.showpkl');
+        Route::post('/pkl/search',[MahasiswaController::class,'showpklajax'])->name('mahasiswa.showpklajax');
+        Route::get('/skripsi/{id}',[MahasiswaController::class,'showskripsi'])->name('mahasiswa.showskripsi');
+        Route::post('/skripsi/search',[MahasiswaController::class,'showskripsiajax'])->name('mahasiswa.showskripsiajax');
+        Route::get('/status/{id}',[MahasiswaController::class,'showstatus'])->name('mahasiswa.showstatus');
+        Route::post('/status/search',[MahasiswaController::class,'showstatusajax'])->name('mahasiswa.showstatusajax');
+        Route::get('/pkl', [App\Http\Controllers\MahasiswaController::class, 'pkl'])->name('mahasiswa.pkl');
+        Route::get('/skripsi', [App\Http\Controllers\MahasiswaController::class, 'skripsi'])->name('mahasiswa.skripsi');
+        Route::get('/status', [App\Http\Controllers\MahasiswaController::class, 'status'])->name('mahasiswa.status');
+        Route::get('/chart/pkl',[MahasiswaController::class,'chartpkl'])->name('mahasiswa.chartpkl');
+        Route::get('/chart/skripsi',[MahasiswaController::class,'chartskripsi'])->name('mahasiswa.chartskripsi');
+        Route::get('/chart/status',[MahasiswaController::class,'chartstatus'])->name('mahasiswa.chartstatus');
+});
 Route::get('/download/template/{id}',[MahasiswaController::class,'downloadtemplate'])->name('mahasiswa.downloadtemplate');
 Auth::routes();
 
@@ -50,12 +43,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 //route resource mahasiswa rith role operator and doswal middleware
 Route::get('/mahasiswa/create', [MahasiswaController::class, 'import'])->middleware('auth','role:operator');
 Route::resource('/mahasiswa', MahasiswaController::class)->middleware('auth','role:doswal');
-Route::get('/pkl', [App\Http\Controllers\MahasiswaController::class, 'pkl'])->name('mahasiswa.pkl')->middleware(['auth','role:doswal']);
-Route::get('/pkl', [App\Http\Controllers\MahasiswaController::class, 'pkl'])->name('mahasiswa.pkl')->middleware(['auth','role:departemen']);
-Route::get('/skripsi', [App\Http\Controllers\MahasiswaController::class, 'skripsi'])->name('mahasiswa.skripsi')->middleware(['auth','role:doswal']);
-Route::get('/skripsi', [App\Http\Controllers\MahasiswaController::class, 'skripsi'])->name('mahasiswa.skripsi')->middleware(['auth','role:departemen']);
-Route::get('/status', [App\Http\Controllers\MahasiswaController::class, 'status'])->name('mahasiswa.status')->middleware(['auth','role:doswal']);
-Route::get('/status', [App\Http\Controllers\MahasiswaController::class, 'status'])->name('mahasiswa.status')->middleware(['auth','role:departemen']);
+
 
 Auth::routes();
 
@@ -76,6 +64,9 @@ Route::put('uploadirs/{nim}',[MahasiswaController::class,'updateirs'])->name('ma
 Route::put('uploadkhs/{id}',[MahasiswaController::class,'updatekhs'])->name('mahasiswa.updatekhs');
 Route::put('uploadpkl/{id}',[MahasiswaController::class,'updatepkl'])->name('mahasiswa.updatepkl');
 Route::put('uploadskripsi/{id}',[MahasiswaController::class,'updateskripsi'])->name('mahasiswa.updateskripsi');
+Route::get('/password', [App\Http\Controllers\MahasiswaController::class, 'password'])->name('password')->middleware('auth');
+Route::put('/password/{nipnim}', [App\Http\Controllers\MahasiswaController::class, 'updatepassword'])->name('password.update')->middleware('auth');
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
             //route to get storage irs pdf
 //Route::get('/mahasiswa/storage/irs/{pdf}',[MahasiswaController::class,'openPdf'])->name('mahasiswa.openPdf');
 

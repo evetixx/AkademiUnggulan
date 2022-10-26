@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Role
+class exclude
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,10 @@ class Role
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        $roles =  explode(' ', $role);
-        
-        if ($roles[1] or $roles[0] == request()->user()->role) {
+        if ($request->user()->role != $role) {
             return $next($request);
         }
-    return $next($request);
+        abort(403, 'Anda tidak memiliki hak mengakses laman tersebut!');
 
         
     }

@@ -27,5 +27,6 @@ class Mahasiswa extends Model
         'tanggal sidang',
         'alamat',
         'no_hp',
+        'dosen_wali',
     ];
 }

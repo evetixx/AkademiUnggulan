@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Response;
 use PDF;
 use App\Charts\SampleChart;
 use Auth;
+use Hash;
 
 class MahasiswaController extends Controller
 {
@@ -55,7 +56,7 @@ class MahasiswaController extends Controller
             'email' => $request->username.'@student.akdung.ac.id',
         ]);
         Alert::success('Berhasil', 'Data Berhasil Diubah');
-        return redirect()->route('profile');
+        return redirect()->route('profile')->with('statussukses', 'Data Tersimpan!');
 
     }else{
         $request->validate([
@@ -68,6 +69,28 @@ class MahasiswaController extends Controller
             'email' => $request->email,
         ]);
     }
+    }
+    public function password()
+    {
+        $datamhs = Mahasiswa::where('nama',Auth::user()->name)->first();
+        $datauser = User::where('name',Auth::user()->name)->first();
+        //make variable to print nipnim from user table based on name
+        return view('password', compact('datamhs','datauser'));
+
+
+    }
+    public function updatepassword(Request $request, $id){
+        $datas = User::where('nipnim', $id);
+        if($request->password == $request->password_confirmation){
+            $datas->update([
+                'password' => Hash::make($request->password),
+            ]);
+            Alert::success('Berhasil', 'Password Berhasil Diubah');
+            return redirect('/logout')->with('statussukses', 'Password diubah, Silahkan Login Kembali!');;
+        }else{
+            Alert::error('Gagal', 'Password Tidak Sama');
+            return redirect()->route('profile');
+        }
     }
 
     /**
