@@ -398,7 +398,7 @@
                     @if($datamhs->semester<7)
                     <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
                     @else
-                    @if($datamhs->skripsi!=null)
+                    @if($datamhs->link_skripsi==null)
                     <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
                     @else
                     <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
