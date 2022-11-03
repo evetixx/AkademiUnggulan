@@ -35,17 +35,17 @@ class ImportMahasiswa implements ToModel, WithHeadingRow, WithValidation, SkipsO
         ]),
         new User([
             'name' => $row['nama'],
-            'nipnim'=>$row['nim'],
+            'nipnim' => $row['nim'],
             'email' => $row['nim'].'@student.akdung.ac.id',
             'password' => Hash::make($row['nim']),
             'role' => 'mahasiswa',
-            'nipnim' => $row['nim'],
         ])];
     }
     public function rules(): array
     {
         return [
             'nim' => 'required|unique:mahasiswa',
+            'nipnim' => 'required|unique:users',
             'nama' => 'required',
             'angkatan' => 'required',
         ];

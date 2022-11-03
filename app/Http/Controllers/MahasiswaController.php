@@ -56,7 +56,7 @@ class MahasiswaController extends Controller
             'email' => $request->username.'@student.akdung.ac.id',
         ]);
         Alert::success('Berhasil', 'Data Berhasil Diubah');
-        return redirect()->route('profile')->with('statussukses', 'Data Tersimpan!');
+        return redirect()->route('profile');
 
     }else{
         $request->validate([
@@ -86,7 +86,7 @@ class MahasiswaController extends Controller
                 'password' => Hash::make($request->password),
             ]);
             Alert::success('Berhasil', 'Password Berhasil Diubah');
-            return redirect('/logout')->with('statussukses', 'Password diubah, Silahkan Login Kembali!');;
+            return redirect('/logout');
         }else{
             Alert::error('Gagal', 'Password Tidak Sama');
             return redirect()->route('profile');
