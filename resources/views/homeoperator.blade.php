@@ -29,6 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
 </head>
 
