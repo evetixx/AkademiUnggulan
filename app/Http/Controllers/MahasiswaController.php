@@ -11,12 +11,11 @@ use App\Http\Requests;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Excel;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
-use PDF;
 use App\Charts\SampleChart;
-use Auth;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class MahasiswaController extends Controller
 {

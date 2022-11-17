@@ -14,6 +14,8 @@ class Mahasiswa extends Model
         'nama',
         'angkatan',
         'jenis_kelamin',
+        'alamat',
+        'semester',
         'irs',
         'sks',
         'sksk',

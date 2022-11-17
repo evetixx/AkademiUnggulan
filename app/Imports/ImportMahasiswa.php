@@ -12,42 +12,46 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
 
 //import excel to database with if status == null status = Belum Disetujui and if status_pkl == null status_pkl = Belum and if status_skripsi == null status_skripsi = Belum
-class ImportMahasiswa implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure
+class ImportMahasiswa implements ToModel, WithHeadingRow, SkipsOnFailure, WithValidation
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
     use Importable, SkipsFailures;
+
     public function model(array $row)
     {
-        return [new Mahasiswa([
-            'nim' => $row['nim'],
-            'nama' => $row['nama'],
-            'semester' => $row['semester'],
-            'dosen_wali' => $row['dosen_wali'],
-            'angkatan' => $row['angkatan'],
-            'jenis_kelamin' => $row['jenis_kelamin'],
-            'status_pkl' => 'Belum',
-            'status_skripsi' =>  'Belum',
-            'status' => 'Belum Disetujui',
-        ]),
-        new User([
-            'name' => $row['nama'],
-            'nipnim' => $row['nim'],
-            'email' => $row['nim'].'@student.akdung.ac.id',
-            'password' => Hash::make($row['nim']),
-            'role' => 'mahasiswa',
-        ])];
+        
+        $nim = Mahasiswa::all()->pluck('nim');
+        $nipnim = User::all()->pluck('nipnim');
+        if ($nim->contains($row['nim'])== false){
+            Mahasiswa::create([
+                'nim' => $row['nim'],
+                'nama' => $row['nama'],
+                'angkatan' => $row['angkatan'],
+                'jenis_kelamin' => $row['jenis_kelamin'],
+                'semester' => $row['semester'],
+                'dosen_wali' => $row['dosen_wali'],
+                'status' => 'Belum Disetujui',
+                'status_pkl' => 'Belum',
+                'status_skripsi' => 'Belum',
+                
+            ]);
+        }
+        else null;
+
+        if ($nipnim->contains($row['nim'])== false){
+            User::create([
+                'nipnim' => $row['nim'],
+                'name' => $row['nama'],
+                'email' => $row['nim'].'@student.akdung.ac.id',
+                'password' => Hash::make($row['nim']),
+                'role' => 'mahasiswa',
+            ]);
+        }
+        else null;
     }
     public function rules(): array
     {
         return [
-            'nim' => 'required|unique:mahasiswa',
-            'nipnim' => 'required|unique:users',
-            'nama' => 'required',
-            'angkatan' => 'required',
+            
         ];
     }
 }
