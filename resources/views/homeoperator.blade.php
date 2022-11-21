@@ -3,6 +3,7 @@
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
+<!-- test -->
 
 <head>
   <meta charset="utf-8">
