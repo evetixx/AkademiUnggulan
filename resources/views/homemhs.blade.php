@@ -112,7 +112,7 @@
                     <div class="text-center"><br>
                       <i class="bi bi-person-fill"></i>
                       <b>Dosen Wali : </b>
-                        {{$dosen_wali}}                  
+                        {{$dosen_wali[0]}}                  
                       <br>
                       (<b>NIM:</b>
                         {{$datamhs->nim}}) 
