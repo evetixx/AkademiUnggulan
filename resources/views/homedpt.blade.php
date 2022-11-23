@@ -56,13 +56,13 @@
           <div class="col-12">
           <div class="card head-img-profile img-responsive">
             <div class="card-body" style="background-color: white">
-              <div class="col-md-10">
-                <div class="row">
-                  <div class="col-md-1" style="background: none; margin-left: 10px;">       
-                    <img src="./assets/img/img_avatar.png" class="profil_mhs" alt="Avatar">
+              <div class="col-md-6">
+                <div class="d-flex flex-row">
+                  <div class="col-sm-2" style="background: none; margin-left: 10px;">       
+                    <img src="./assets/img/img_avatar.png" class="profil_mhs" style="max-width: 100%;height:auto" alt="Avatar">
                   </div>
-                  <div class="col-md-6 d-flex ">
-                    <h6 class="card-title nama_mhs align-self-center h-25" style="margin-left: 15px; margin-top: 15px;">Departemen Informatika</h6>
+                  <div class="col-sm-6">
+                    <h6 class="card-title nama_mhs align-self-center h-25" style="margin-left: 5px; margin-top: 30px;">Departemen Informatika</h6>
                   </div>
                 </div> 
               </div>
@@ -96,26 +96,21 @@
   
             </div>
         </div><!-- End Nama NIM Prodi -->
-        
-        <div class="row">
-            
+
+        <div class="container-fluid">
+          <div class="row">
             <!-- Data Dosen -->
             <div class="col-md-3">
-              <div class="card info-card sales-card">
+              <div class="card info-card sales-card" style="width: 100%">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#entryPKL" style="border: none; background-color: white;">
                     <div class="card-body">
-                        <h5 class="card-title"><span></span></h5>
-
-                        <div class="d-flex" style="margin-bottom: 10px">
+                      <div class="d-flex flex-row align-items-center" style="width:100%;height:100px;">                    
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-person-square"></i>
-                        </div>
-                        <div class="text-center justify-content-center" style="font-size: 10px;">
-                            <h6>Data Dosen</h6>
-                            <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
-                            <!-- <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span> -->
-                        </div>
-
+                              <i class="bi bi-person-square"></i>
+                          </div>
+                          <div class="text-center justify-content-center" style="font-size: 10px;">
+                              <h6>Data Dosen</h6>
+                          </div>
                         </div>
                     </div>
                     </button>
@@ -124,104 +119,86 @@
 
             <!-- Data Mahasiswa -->
             <div class="col-md-3">
-                <div class="card info-card sales-card">
+              <div class="card info-card sales-card" style="width: 100%">
                 <a href="/status"><button type="button" style="border: none; background-color: white;">
                 <div class="card-body">
-                    <h5 class="card-title"><span></span></h5>
-
-                    <div class="d-flex" style="margin-bottom: 10px">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="d-flex flex-row align-items-center" style="width:100%;height:100px">                    
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-pencil-square"></i>
                     </div>
-                    <div class=" text-center justify-content-center">
+                    <div class=" text-center justify-content-center" style="font-size: 10px">
                         <h6>Data Mahasiswa</h6>
-                        <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-check-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Sudah Entry</span> -->
-
                     </div>
                     </div>
                 </div>
                 </button></a>
-                </div>
+              </div>
             </div>
 
             <!-- Manajemen Akun -->
             <div class="col-md-3">
-              <div class="card info-card sales-card">
+              <div class="card info-card sales-card" style="width 100%">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#entryPKL" style="border: none; background-color: white;">
                 <div class="card-body">
-                  <h5 class="card-title"><span></span></h5>
-
-                  <div class="d-flex" style="margin-bottom: 10px">
+                  <div class="d-flex flex-row align-items-center" style="width:100%;height:100px">                    
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-person-square"></i>
                     </div>
-                    <div class="" style="font-size: 10px;">
+                    <div class="text-center justify-content-center" style="font-size: 10px;">
                       <h6>Manajemen Akun</h6>
-                      <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
-                      <!-- <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span> -->
                     </div>
-    
                   </div>
                 </div>
               </button>
               </div>
             </div>
 
-            <!-- Row Kebawah Paling Kanan-->
-            <div class="col-md-3">
-                <div class="row">
-
-                    <!-- Mahasiswa PKL -->
-                    <div class="col-md-12">
-                        <div class="card info-card sales-card">
-                            <a href="/pkl"><button type="button" style="border: none; background-color: white;"><button type="button" style="border: none; background-color: white;">
-                            <div class="card-body">
-                            <h5 class="card-title"><span></span></h5>
-
-                            <div class="d-flex" style="margin-bottom: 10px">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-person-square"></i>
-                                </div>
-                                <div class="" style="font-size: 10px;">
-                                <h6>Mahasiswa PKL</h6>
-                                <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
-                                <!-- <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span> -->
-                                </div>
-                
-                            </div>
-                            </div>
-                            </button>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Mahasiswa Skripsi -->
-                    <div class="col-md-12">
-                        <div class="card info-card sales-card">
-                            <a href="/skripsi"><button type="button" style="border: none; background-color: white;"><button type="button" style="border: none; background-color: white;">
-                            <div class="card-body">
-                            <h5 class="card-title"><span></span></h5>
-
-                            <div class="d-flex" style="margin-bottom: 10px">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-person-square"></i>
-                                </div>
-                                <div class="" style="font-size: 10px;">
-                                <h6>Mahasiswa Skripsi</h6>
-                                <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
-                                <!-- <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span> -->
-                                </div>
-                
-                            </div>
-                            </div>
-                            </button>
-                            </a>
-                        </div>
-                    </div>
-                
-                </div>
             
-            </div>  
+            <!-- Mahasiswa PKL -->
+            <div class="col-md-3">
+              <div class="card info-card sales-card" style="width: 100%">
+                <a href="/pkl"><button type="button" style="border: none; background-color: white;">
+                <div class="card-body">
+                  <div class="d-flex flex-row align-items-center" style="width: 100%;height:100px">                    
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-person-square"></i>
+                    </div>
+                    <div class="text-center justify-content-center" style="font-size: 10px;">
+                      <h6>Mahasiswa PKL</h6>
+                    </div>
+                  </div>
+                </div>
+                </button>
+                </a>
+              </div>
+            </div>
+            
+              <!-- Row Kebawah Paling Kanan-->
+              <div class="col-md-3">
+                <!-- Mahasiswa Skripsi -->
+                <div class="col-md-12">
+                  <div class="card info-card sales-card" style="width: 100%">
+                    <a href="/skripsi"><button type="button" style="border: none; background-color: white;"><button type="button" style="border: none; background-color: white;">
+                        <div class="card-body">        
+                          <div class="d-flex flex-row align-items-center" style="width: 100%;height:100px"> 
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-person-square"></i>
+                            </div>
+                            <div class="" style="font-size: 10px;">
+                            <h6>Mahasiswa Skripsi</h6>
+                            <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
+                            <!-- <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span> -->
+                            </div>
+            
+                        </div>
+                        </div>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+            
         </div>
     </section>
 
