@@ -175,7 +175,7 @@ let htmlView = '';
 if(res.datas.length <= 0){
     htmlView+= `
        <tr>
-            <td colspan="10" class="text-center">Data Tidak Ditemukan</td>
+            <td colspan="10" class="text-center">Data not found</td>
          </tr>
             <tr>
           <td colspan="4">No data.</td>
