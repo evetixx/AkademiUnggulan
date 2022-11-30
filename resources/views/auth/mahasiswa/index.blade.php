@@ -63,17 +63,7 @@
                 <a href="{{route('mahasiswa.show', 22)}}" class="btn btn-primary"role="button">22</a>
             @endif
                            <form action="" method="POST">
-                       <div class="row">
-                         <div class="col-md-6">
-                            <div class="input-group mb-3">
              <input type="text" class="form-control"   placeholder="Search mahasiswa" id="search">
-                <div class="input-group-prepend">
-                 <span class="input-group-text" id="basic-addon1">
-</span>
-</div>
-</div>
-</div>
-</div>
 </form>
         <table class="table table-striped" id="Tablekucok"> 
             <tr>
