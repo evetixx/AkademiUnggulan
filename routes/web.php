@@ -29,6 +29,7 @@ Route::group(['middleware' => ['exclude:mahasiswa']], function () {
         Route::post('/skripsi/search',[MahasiswaController::class,'showskripsiajax'])->name('mahasiswa.showskripsiajax');
         Route::get('/status/{id}',[MahasiswaController::class,'showstatus'])->name('mahasiswa.showstatus');
         Route::post('/status/search',[MahasiswaController::class,'showstatusajax'])->name('mahasiswa.showstatusajax');
+        Route::post('/mahasiswa/search',[MahasiswaController::class,'showmahasiswasetujuiajax'])->name('mahasiswa.showmahasiswasetujuiajax');
         Route::get('/pkl', [App\Http\Controllers\MahasiswaController::class, 'pkl'])->name('mahasiswa.pkl');
         Route::get('/skripsi', [App\Http\Controllers\MahasiswaController::class, 'skripsi'])->name('mahasiswa.skripsi');
         Route::get('/status', [App\Http\Controllers\MahasiswaController::class, 'status'])->name('mahasiswa.status');

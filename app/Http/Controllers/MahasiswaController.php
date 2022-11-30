@@ -188,6 +188,19 @@ class MahasiswaController extends Controller
       ]);}
     }
 
+    public function showmahasiswasetujuiajax (Request $request){
+        if(Auth::user()->role == 'doswal'){
+        if($request->keyword != ''){
+            $datas = Mahasiswa::where('nama','LIKE','%'.$request->keyword.'%')->where('dosen_wali', Auth::user()->name)->get();
+            }
+            else{
+            $datas = Mahasiswa::WHERE('dosen_wali', Auth::user()->name)->get();
+            }
+        return response()->json([
+            'datas' => $datas
+        ]);}
+    }
+
     public function skripsi(){
         if(Auth::user()->role == 'doswal'){
         $datas = Mahasiswa::WHERE('dosen_wali', Auth::user()->name)->paginate(5);

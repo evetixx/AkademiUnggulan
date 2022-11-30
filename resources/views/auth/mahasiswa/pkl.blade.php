@@ -33,21 +33,6 @@
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
 
-  <script>
-    // entah kenapa script di external gabisa
-    function showGenre(item) {
-        document.getElementById("dropdownMenuButton1").innerHTML = "Angkatan " + item.innerHTML;
-        document.getElementById("totalMHSAngkatan").innerHTML = "Total Status Mahasiswa PKL Angkatan "  + item.innerHTML + ":";
-        document.getElementById("totalStatusMHS").style.display = "block";
-    }
-
-    function showGenre2(item) {
-        document.getElementById("dropdownMenuButton1").innerHTML = item.innerHTML;
-        document.getElementById("totalMHSAngkatan").innerHTML = "Total Status Mahasiswa PKL "  + item.innerHTML + ":";
-        document.getElementById("totalStatusMHS").style.display = "block";
-    }
-
-  </script>
 
 </head>
 

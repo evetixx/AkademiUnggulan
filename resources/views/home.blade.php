@@ -169,7 +169,7 @@
                 <!-- Entry IRS Card -->
                 <div class="col-md-6">
                   <div class="card info-card sales-card">
-                  <a href="master_data.php"><button type="button" style="border: none; background-color: white;">
+                  <a href="mahasiswa"><button type="button" style="border: none; background-color: white;">
                     <div class="card-body">
                       <h5 class="card-title"><span></span></h5>
                       <div class="d-flex" style="margin-bottom: 10px">
