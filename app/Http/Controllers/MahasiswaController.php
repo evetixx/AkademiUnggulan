@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         //datas sorted from status == Belum Disetujui first then Disetujui  
-        $datas = Mahasiswa::orderByRaw('FIELD(status, "Belum Disetujui", "Disetujui")')->get();
+        $datas = Mahasiswa::orderByRaw('FIELD(status, "Belum Disetujui", "Disetujui")')->WHERE('dosen_wali', Auth::user()->name)->get();
         $angkatan="";
         return view('auth.mahasiswa.index', compact('datas','angkatan',));
 

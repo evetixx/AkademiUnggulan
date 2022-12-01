@@ -42,6 +42,8 @@
             <a href="{{route('mahasiswa.create')}}" class="btn btn-warning float-lg-right">Tambah anggota</a>
         </div>
         <div class="card-body">
+            <div class="row">
+                <div class="col">
             @if($angkatan == null)
             <a href="{{route('mahasiswa.index')}}" class="btn btn-primary active" role="button" aria-pressed="true">Semua Angkatan</a>
             @else
@@ -62,9 +64,13 @@
             @else
                 <a href="{{route('mahasiswa.show', 22)}}" class="btn btn-primary"role="button">22</a>
             @endif
+</div>
+<div class="col">
                            <form action="" method="POST">
-             <input type="text" class="form-control"   placeholder="Search mahasiswa" id="search">
-</form>
+             <input type="text" class="form-control "   placeholder="Search mahasiswa" id="search">
+            </form>
+</div>  
+            </div>
         <table class="table table-striped" id="Tablekucok"> 
             <tr>
                 <th>NIM</th>
