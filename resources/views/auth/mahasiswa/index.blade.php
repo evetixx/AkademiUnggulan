@@ -224,13 +224,6 @@ else{htmlView+= `
                     <button type="click" class="btn btn-sm btn-danger shadow" onclick="return confirm('Apakah anda yakin ingin Membatalkan persetujuan?')">Batalkan</button>
                 </form>`}
             </td>
-            <td>
-                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                action="{{ route('mahasiswa.destroy', $data->id) }}" method="POST">
-                <a href="{{ route('mahasiswa.edit', $data->id) }}"
-                class="btn btn-sm btn-info shadow">Edit</a>
-                </form>
-            </td>
         </tr>`;
     });
                                     

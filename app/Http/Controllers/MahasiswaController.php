@@ -496,7 +496,7 @@ class MahasiswaController extends Controller
                 'status_pkl' => $request->status_pkl
                 ]);
                 Alert::success('Sukses', 'Data Berhasil Diubah');
-                return redirect()->route('mahasiswa.index');
+                return redirect()->route('home.index');
             }
             $data = Mahasiswa::findOrfail($id);
             $data->update([

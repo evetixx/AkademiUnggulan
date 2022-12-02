@@ -218,7 +218,7 @@
                           Jumlah SKS yang diambil
                           <div class="col-md-2">
                             <style>input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}</style>
-                            <input type="number" onkeydown="return event.keyCode !== 69" id="sks" name="sks" class="form-control someInput" placeholder="" min="0" max="24" aria-label="Email" aria-describedby="basic-addon1">
+                            <input type="number" onkeydown="return event.keyCode !== 69" id="sks" name="sks" class="form-control someInput" placeholder="" min="0" max="24" aria-label="Email" aria-describedby="basic-addon1" value="{{$datamhs->sks}}">
                          </div>      
                         </div>
                       </div>
@@ -255,7 +255,7 @@
                       Jumlah SKS keseluruhan
                       <div class="col-md-2">
                         <style>input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}</style>
-                        <input type="number" onkeydown="return event.keyCode !== 69" id="sksk" class="form-control someInput" placeholder="" min="0" max="200" aria-label="Email" aria-describedby="basic-addon1">
+                        <input type="number" onkeydown="return event.keyCode !== 69" id="sksk" class="form-control someInput" placeholder="" min="0" max="200" aria-label="Email" aria-describedby="basic-addon1" value="{{$datamhs->sksk}}">
                      </div>      
                     </div>
                   </div>
