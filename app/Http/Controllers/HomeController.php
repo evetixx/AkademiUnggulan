@@ -8,7 +8,7 @@ use App\Models\User;
 use Hash;
 use App\Charts\SampleChart;
 use RealRashid\SweetAlert\Facades\Alert;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -79,14 +79,29 @@ class HomeController extends Controller
         }
         //if role == doswal view home
         if(Auth::user()->role == 'doswal'){
+            if(Hash::check($datauser->nipnim,$datauser->password)){
+                Alert::error('Gagal', 'Ubah data diri dan password anda');
+                return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
+            else{
             return view('home', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs','datauser'));
         }
+    }
         if(Auth::user()->role == 'operator'){
+            if(Hash::check($datauser->nipnim,$datauser->password)){
+                Alert::error('Gagal', 'Ubah data diri dan password anda');
+                return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
+            else{
             return view('homeoperator', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
         }
+    }
         if(Auth::user()->role == 'departemen'){
+            if(Hash::check($datauser->nipnim,$datauser->password)){
+                Alert::error('Gagal', 'Ubah data diri dan password anda');
+                return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
+            else{
             return view('homedpt', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
         }
         
-    }
+    } 
+}
 }

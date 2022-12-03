@@ -36,12 +36,15 @@ class MahasiswaController extends Controller
 
     public function profile()
     {
-        $datamhs = Mahasiswa::where('nama',Auth::user()->name)->first();
-        $datauser = User::where('name',Auth::user()->name)->first();
-        //make variable to print nipnim from user table based on name
-        return view('profile', compact('datamhs','datauser'));
-
-
+        if (Auth::user()->role == 'mahasiswa') {
+            $datamhs = Mahasiswa::where('nama',Auth::user()->name)->first();
+            $datauser = User::where('name',Auth::user()->name)->first();
+            return view('profile', compact('datauser','datamhs'));
+        } else {
+            $datamhs = Mahasiswa::where('nama',Auth::user()->name)->first();
+            $datauser = User::where('name',Auth::user()->name)->first();
+            return view('profilenonmhs', compact('datauser','datamhs'));
+        }
     }
     public function updateprofile(Request $request, $id)
     {       if (Auth::user()->role == 'mahasiswa'){
