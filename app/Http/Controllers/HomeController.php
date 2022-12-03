@@ -74,12 +74,12 @@ class HomeController extends Controller
                 Alert::error('Gagal', 'Ubah data diri dan password anda');
                 return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
             else{
-            return view('homemhs', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
+            return view('homemhs', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs',));
             }
         }
         //if role == doswal view home
         if(Auth::user()->role == 'doswal'){
-            return view('home', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));
+            return view('home', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs','datauser'));
         }
         if(Auth::user()->role == 'operator'){
             return view('homeoperator', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs'));

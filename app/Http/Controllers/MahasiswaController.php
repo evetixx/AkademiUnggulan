@@ -607,5 +607,42 @@ class MahasiswaController extends Controller
         return Response::download($file);
     }
 
+    // store new data mahassiwa to user and mahassiwa table
+    public function storemhs(Request $request)
+    {
+        $data = User::create([
+            'nipnim' => $request->nipnim,
+            'name' => $request->nama,
+            'email' => $request->nipnim.'@student.akdung.ac.id',
+            'password' => Hash::make($request->nipnim),
+            'role' => 'mahasiswa',
+            'semester' => $request->semester,
+        ]);
+        $data = Mahasiswa::create([
+            'nama' => $request->nama,
+            'nim' => $request->nipnim,
+            'angkatan' => $request->angkatan,
+            'semester' => $request->semester,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'dosen_wali' => $request->dosen_wali,
+            'status_pkl' => 'Belum',
+            'status_skripsi' => 'Belum',
+        ]);
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return redirect()->route('mahasiswa.create');
+    }
+    
+    public function storedoswal(Request $request)
+    {
+        $data = User::create([
+            'nipnim' => $request->nipnim,
+            'name' => $request->nama,
+            'email' => $request->nipnim.'@lecturer.akdung.ac.id',
+            'password' => Hash::make($request->nipnim),
+            'role' => 'doswal',
+        ]);
+        Alert::success('Berhasil', 'Data Berhasil Ditambahkan');
+        return redirect()->route('mahasiswa.create');
+    }
 
 }

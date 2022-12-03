@@ -63,7 +63,7 @@
                     <img src="./assets/img/img_avatar.png" class="profil_mhs" alt="Avatar">
                   </div>
                   <div class="col-md-6 d-flex ">
-                    <h6 class="card-title nama_mhs align-self-center h-25" style="margin-left: 15px; margin-top: 15px;">Dinar Mutiara Kusumo Nugraheni, S.T., M.InfoTech.(Comp)., Ph.D.</h6>
+                    <h6 class="card-title nama_mhs align-self-center h-25" style="margin-left: 15px; margin-top: 15px;">{{$datauser->name}}</h6>
                   </div>
                 </div> 
               </div>
@@ -76,7 +76,7 @@
                     &nbsp;
                   </div>
                   <div class="col-md-6">
-                    <h5 class="card-title" style="margin-left: 25px;"><b>NIP</b>: 197601102009122002 | Fakultas Sains dan Matematika  | Informatika S1</h5>
+                    <h5 class="card-title" style="margin-left: 25px;"><b>NIP</b>: {{ $datauser->nipnim }} | Fakultas Sains dan Matematika  | Informatika S1</h5>
                   </div>
                 </div>
 

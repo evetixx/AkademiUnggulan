@@ -57,6 +57,10 @@ Route::get('/file-import',[MahasiswaController::class,
             'importView'])->name('import-view'); 
 Route::post('/mahasiswa/create',[MahasiswaController::class,
             'import'])->name('mahasiswa.import'); 
+Route::post('/mahasiswa/create/mhs',[MahasiswaController::class,
+            'storemhs'])->name('mahasiswa.storemhs');
+Route::post('/mahasiswa/create/doswal',[MahasiswaController::class,
+            'storedoswal'])->name('mahasiswa.storedoswal');
 Route::get('/export-users',[MahasiswaController::class,
             'export'])->name('mahasiswa.export');
 Route::get('/profile', [App\Http\Controllers\MahasiswaController::class, 'profile'])->name('profile')->middleware('auth');

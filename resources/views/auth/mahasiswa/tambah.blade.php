@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('content')
+@include('sweetalert::alert')
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -56,14 +57,132 @@
   
 
 </body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
-                    Import Data Mahasiswa
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Input Data</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="dashboard_mahasiswa.php">Home</a></li>
+          <li class="breadcrumb-item active">Input Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row justify-content-center">
+        <div class="col-xl-6">
+
+          <div class="card">
+            <div class="card-header">
+                <div class="card-title px-2">Form Input Data Manual</div>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseInputDosenWali" aria-expanded="false" aria-controls="collapseInputDosenWali" onclick="collapseToggle1()">Input Dosen Wali</button>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseInputMahasiswa" aria-expanded="false" aria-controls="collapseInputMahasiswa" onclick="collapseToggle2()">Input Mahasiswa</button>
+            </div>
+            <div class="collapse" id="collapseInputMahasiswa">
+                <form action="{{ route('mahasiswa.storemhs') }}" method="POST"> 
+                    @csrf <!-- {{ csrf_field() }} --> 
+                <div class="card-body pt-4 d-flex flex-column">
+                    <div class="row mb-3">
+                      <label for="formNIM" class="col-md-3 col-lg-2 col-form-label px-3">NIM</label>
+                      <div class="col-md-8 col-lg-10">
+                        <input name="nipnim" type="text" class="form-control" id="nipnim">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="formNama" class="col-md-3 col-lg-2 col-form-label px-3">Nama</label>
+                      <div class="col-md-8 col-lg-10">
+                        <input name="nama" type="text" class="form-control" id="nama">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="formSemester" class="col-md-3 col-lg-2 col-form-label px-3">Semester</label>
+                        <div class="col-md-8 col-lg-10">
+                          <input name="semester" type="text" class="form-control" id="semester">
+                        </div>
+                      </div>
+
+                    <div class="row mb-3">
+                      <label for="formAngkatan" class="col-md-3 col-lg-2 col-form-label px-3">Angkatan</label>
+                      <div class="col-md-8 col-lg-10">
+                        <input name="angkatan" type="text" class="form-control" id="angkatan">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="formDosenWali" class="col-md-3 col-lg-2 col-form-label px-3">Dosen Wali</label>
+                      <div class="col-md-8 col-lg-10">
+                        <input name="dosen_wali" type="text" class="form-control" id="dosen_wali">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                    <label for="renewPassword" class="col-md-2 col-form-label px-3">Jenis Kelamin</label>
+                    <div class="col-md-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="Pria" value="Pria">
+                            <label class="form-check-label" for="Pria">
+                                Pria
+                            </label>
+                        </div>
+                        <div class="col-md-8 form-check">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="Wanita" value = "Wanita">
+                            <label class="form-check-label" for="Wanita">
+                                Wanita
+                            </label>
+                        </div>
+                    </div>
+                        
+                    </div>
+                    
                 </div>
-                <div class="card-body">
+                <div class="p-3" style="float: right;">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+            </div>
+
+            <div class="collapse" id="collapseInputDosenWali">
+                <form action="{{ route('mahasiswa.storedoswal') }}" method="POST"> 
+                    @csrf <!-- {{ csrf_field() }} -->            
+                <div class="card-body pt-4 d-flex flex-column">
+                
+                    <div class="row mb-3">
+                      <label for="NIM" class="col-md-3 col-lg-2 col-form-label px-3">NIP</label>
+                      <div class="col-md-8 col-lg-10">
+                        <input name="nipnim" type="number" class="form-control" id="NIM">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-3 col-lg-2 col-form-label px-3">Nama</label>
+                      <div class="col-md-8 col-lg-10">
+                        <input name="nama" type="text" class="form-control" id="nama">
+                      </div>
+                    </div>
+                  
+                </div>
+                <div class="p-3" style="float: right;">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                
+            </form>
+            </div>
+          </div>
+
+        </div>
+        
+    
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-header">
+                <div class="card-title px-2">Import Data Mahasiswa</div>
+            </div>
+            <div class="card-body pt-3">
+                <div class="mb-3">
                     <form action="{{route('mahasiswa.import')}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field() }}
                         <div class="form-group">
@@ -74,36 +193,56 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+          </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
-                    Download Template Import
-                </div>
-                <div class="card-body">
-                    <a href="{{Route('mahasiswa.downloadtemplate','Template.xlsx')}}" class="btn btn-success my-3" target="_blank">Download Template</a>
-                </div>
+          <div class="card">
+            <div class="card-header">
+                <div class="card-title px-2">Download Template Import</div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
-                    Export Data Mahasiswa
-                </div>
-                <div class="card-body">
+            <div class="card-body pt-3">
+                    <a href="{{Route('mahasiswa.downloadtemplate','Template.xlsx')}}" class="btn btn-success my-3" target="_blank">Download Template</a>
+
+            
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+                <div class="card-title px-2">Export Data Mahasiswa</div>
+            </div>
+            <div class="card-body pt-3">
+                <div class="my-3">
                     <a href="{{route('mahasiswa.export')}}" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                 </div>
+
+            
             </div>
+          </div>
+
         </div>
-    </div>
-</div>
+        
+    </section>
+
+  </main>
+<script>
+    
+    function collapseToggle1() {
+        let x = new bootstrap.Collapse(collapseInputMahasiswa, {
+            toggle : false
+        })
+
+        x.hide()
+
+    }
+
+    function collapseToggle2() {
+        let x = new bootstrap.Collapse(collapseInputDosenWali, {
+            toggle : false
+        })
+
+        x.hide()
+
+    }
+
+  </script>
 @endsection

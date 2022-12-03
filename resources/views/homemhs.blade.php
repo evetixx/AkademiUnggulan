@@ -176,13 +176,13 @@
                           <i class="bi bi-pencil-square"></i>
                         </div>
                         <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
-                          <h6>ENTRY IRS
+                          <h6>ENTRY IRS</h6>
                             @if($datamhs->irs == null)
                             <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
                             @else
-                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: 1">Sudah</span>
+                            <span class="text-success small pt-1 fw-bold"><i class="bi bi-check-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Sudah Entry</span>
                             @endif
-                        </h6>
+                        
                             @if($datamhs->irs == null)
                             <span class="text-danger small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-danger small pt-2 ps-1">Harap Entry KHS</span>
                             @endif
@@ -276,16 +276,18 @@
                 @endif
                 <div class="card-body">
                   <h5 class="card-title"><span></span></h5>
-
+                  <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
                   <div class="d-flex" style="margin-bottom: 10px">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-person-square"></i>
                     </div>
                     <div class="ps-2">
+                      
                       <h6>ENTRY PKL
                         @if($datamhs->semester<5)
-                        </h6>
+                      
                         <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
+                      </h6>
                         @else
                         @if($datamhs->link_pkl==null)
                         <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
@@ -293,7 +295,7 @@
                         <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
                         @endif
                         @endif
-                      </>
+                      </div>
 
                       <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
 
@@ -355,7 +357,7 @@
                 <button type="button" data-bs-toggle="modal" data-bs-target="#entryKHS" style="border: none; background-color: white;">
                   <div class="card-body">
                     <h5 class="card-title"><span></span></h5>
-
+                    <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
                     <div class="d-flex" style="margin-bottom: 10px">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-card-list"></i>
@@ -373,7 +375,7 @@
                             @endif
                       </div>
                     </div>
-
+                    </div>
                   </div>
                 </button>
                 </div>
@@ -388,7 +390,7 @@
               @endif
               <div class="card-body">
                 <h5 class="card-title"><span></span></h5>
-
+                <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
                 <div class="d-flex" style="margin-bottom: 10px">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-book"></i>
@@ -404,7 +406,7 @@
                     <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
                     @endif
                     @endif
-
+                  </div>
                   </div>
                 </div>
 
