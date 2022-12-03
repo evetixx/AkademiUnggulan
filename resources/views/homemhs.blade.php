@@ -165,24 +165,22 @@
             <div class="col-md-6">
               <div class="row">
                 <!-- Entry IRS Card -->
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3 d-flex align-items-stretch">
                   <div class="card info-card sales-card">
                   <button type="button" data-bs-toggle="modal" data-bs-target="#entryIRS" style="border: none; background-color: white;">
                     <div class="card-body">
-                      <h5 class="card-title"><span></span></h5>
-
-                      <div class="d-flex" style="margin-bottom: 10px">
+                      <div class="d-flex">
                         <div style="margin-top: 20px" class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i class="bi bi-pencil-square"></i>
                         </div>
                         <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
-                          <h6>ENTRY IRS</h6>
+                          <h6>ENTRY IRS
                             @if($datamhs->irs == null)
                             <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
                             @else
-                            <span class="text-success small pt-1 fw-bold"><i class="bi bi-check-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Sudah Entry</span>
+                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: 1">Sudah</span>
                             @endif
-                        
+                        </h6>
                             @if($datamhs->irs == null)
                             <span class="text-danger small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-danger small pt-2 ps-1">Harap Entry KHS</span>
                             @endif
@@ -218,7 +216,7 @@
                           Jumlah SKS yang diambil
                           <div class="col-md-2">
                             <style>input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}</style>
-                            <input type="number" onkeydown="return event.keyCode !== 69" id="sks" name="sks" class="form-control someInput" placeholder="" min="0" max="24" aria-label="Email" aria-describedby="basic-addon1" value="{{$datamhs->sks}}">
+                            <input type="number" onkeydown="return event.keyCode !== 69" id="sks" name="sks" class="form-control someInput" placeholder="" min="0" max="24" aria-label="Email" aria-describedby="basic-addon1">
                          </div>      
                         </div>
                       </div>
@@ -255,7 +253,7 @@
                       Jumlah SKS keseluruhan
                       <div class="col-md-2">
                         <style>input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}</style>
-                        <input type="number" onkeydown="return event.keyCode !== 69" id="sksk" class="form-control someInput" placeholder="" min="0" max="200" aria-label="Email" aria-describedby="basic-addon1" value="{{$datamhs->sksk}}">
+                        <input type="number" onkeydown="return event.keyCode !== 69" id="sksk" class="form-control someInput" placeholder="" min="0" max="200" aria-label="Email" aria-describedby="basic-addon1">
                      </div>      
                     </div>
                   </div>
@@ -269,44 +267,35 @@
             </div>
 
             <!-- Entry PKL Card -->
-            <div class="col-md-6">
-              <div class="card info-card sales-card">
+            <div class="col-md-6 mb-3 d-flex align-items-stretch">
+              <div class="card info-card sales-card d-flex align-items-center justify-content-center">
                 @if($datamhs->semester>4)
-                <button type="button" data-bs-toggle="modal" data-bs-target="#entryPKL" style="border: none; background-color: white;">
+                <button class="mt-3" type="button" data-bs-toggle="modal" data-bs-target="#entryPKL" style="border: none; background-color: white;">
                 @endif
                 <div class="card-body">
-                  <h5 class="card-title"><span></span></h5>
-                  <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
-                  <div class="d-flex" style="margin-bottom: 10px">
+
+                  <div class="d-flex" >
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-person-square"></i>
                     </div>
-                    <div class="ps-2">
-                      
+                    <div class="mt-3 ps-2">
                       <h6>ENTRY PKL
                         @if($datamhs->semester<5)
-                      
                         <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
-                      </h6>
                         @else
                         @if($datamhs->link_pkl==null)
-                        <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
+                        <span style="font-size: 15px; " class="small badge badge-pill bg-danger ">Belum</span>
                         @else
-                        <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
+                        <span style="font-size: 15px; " class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
                         @endif
                         @endif
-                      </div>
-
-                      <!-- <span class="text-success small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-muted small pt-2 ps-1">Harap Entry KHS</span> -->
-
+                      </h6>
                     </div>
-    
                   </div>
                 </div>
               </button>
               </div>
             </div><!-- Entry KHS Card -->
-            </div>
 
             <!-- Modal Entry Progress PKL -->
             <div class="modal fade" id="entryPKL" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -347,35 +336,30 @@
             </div>
 
             
-          <div class="col-md-12">
-            <div class="row">
-
-            
+          <div class="w-100 py-2"></div>            
             <!-- Entry KHS Card -->
-              <div class="col-md-6">
-                <div class="card info-card sales-card">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#entryKHS" style="border: none; background-color: white;">
+            <div class="col-md-6 mb-3 d-flex align-items-stretch">
+                <div class="card info-card sales-card text-center d-flex align-items-center justify-content-center">
+                <button class="mt-3" type="button" data-bs-toggle="modal" data-bs-target="#entryKHS" style="border: none; background-color: white;">
                   <div class="card-body">
-                    <h5 class="card-title"><span></span></h5>
-                    <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
-                    <div class="d-flex" style="margin-bottom: 10px">
+                    <div class="d-flex">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-card-list"></i>
                       </div>
-                      <div class="ps-2">
+                      <div class="mt-3 ps-2">
                         <h6>ENTRY KHS
-                        @if($datamhs->khs == null)
-                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
-                            @else
-                            <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5;">Sudah</span>
-                            @endif
+                          @if($datamhs->khs == null)
+                          <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-danger ">Belum</span>
+                          @else
+                          <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5;">Sudah</span>
+                          @endif
                         </h6>
                             @if($datamhs->khs == null)
                             <span class="text-danger small pt-1 fw-bold"><i class="bi bi-exclamation-circle"></i></span> <span class="text-danger small pt-2 ps-1">Harap Entry KHS</span>
                             @endif
                       </div>
                     </div>
-                    </div>
+
                   </div>
                 </button>
                 </div>
@@ -383,19 +367,18 @@
             
           
            <!-- Entry Skripsi Card -->
-           <div class="col-md-6">
-            <div class="card info-card sales-card">
+           <div class="col-md-6 mb-3 d-flex align-items-stretch">
+            <div class="card info-card sales-card  text-center d-flex align-items-center justify-content-center">
               @if($datamhs->semester>6)
-              <button type="button" data-bs-toggle="modal" data-bs-target="#entrySkripsi" style="border: none; background-color: white;">
+              <button class="mt-3" type="button" data-bs-toggle="modal" data-bs-target="#entrySkripsi" style="border: none; background-color: white;">
               @endif
               <div class="card-body">
-                <h5 class="card-title"><span></span></h5>
-                <div style="margin-top: 20px" class="ps-2 text-center justify-content-center">
-                <div class="d-flex" style="margin-bottom: 10px">
+
+                <div class="d-flex">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-book"></i>
                   </div>
-                  <div class="ps-2">
+                  <div class="mt-3 ps-2">
                     <h6>ENTRY SKRIPSI</h6>
                     @if($datamhs->semester<7)
                     <span class="text-muted small pt-1 fw-bold"><i class="bi bi-dash-circle"></i> </span> <span class="text-muted small pt-2 ps-1">Belum diperbolehkan</span>
@@ -406,10 +389,10 @@
                     <span style="font-size: 15px; padding-bottom: -5px" class="small badge badge-pill bg-success font-size: -5 ">Sudah</span>
                     @endif
                     @endif
-                  </div>
+
                   </div>
                 </div>
-
+                </div>
               </div>
               </button>
             </div>
@@ -467,10 +450,7 @@
                   </form>
                 </div>
               </div>
-            </div>
-
-          
-            </div>
+            </div>          
           </div>
         </div>  
 
