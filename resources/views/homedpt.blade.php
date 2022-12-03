@@ -136,8 +136,8 @@
             </div>
 
             <!-- Manajemen Akun -->
-            <div class="col-md-3">
-              <div class="card info-card sales-card" style="width 100%">
+            <!-- <div class="col-md-3">
+              <div class="card info-card sales-card" style="width:100%">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#entryPKL" style="border: none; background-color: white;">
                 <div class="card-body">
                   <div class="d-flex flex-row align-items-center" style="width:100%;height:100px">                    
@@ -151,7 +151,7 @@
                 </div>
               </button>
               </div>
-            </div>
+            </div> -->
 
             
             <!-- Mahasiswa PKL -->
