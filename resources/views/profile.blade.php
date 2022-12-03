@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
+@include('sweetalert::alert')
 <!DOCTYPE html>
 <html lang="en">
 
