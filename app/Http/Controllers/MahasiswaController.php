@@ -63,13 +63,13 @@ class MahasiswaController extends Controller
     }else{
         $request->validate([
             'username' => 'required',
-            'alamat' => 'required',
-            'no_hp' => 'required',
         ]);
         $datas = User::where('nipnim', $id);
         $datas->update([
-            'email' => $request->email,
+            'email' => $request->username.'@lecturer.akdung.ac.id',
         ]);
+        Alert::success('Berhasil', 'Data Berhasil Diubah');
+        return redirect()->route('profile');
     }
     }
     public function password()
