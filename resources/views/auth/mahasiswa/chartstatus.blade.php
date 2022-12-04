@@ -75,7 +75,7 @@
                             <div class="card-title">
                                 <div class="row">
                                     <div class="col-9 px-4">
-                                        <h5 id="titleAngkatan">Daftar Mahasiswa PKL</h5>
+                                        <h5 id="titleAngkatan">Daftar Status Mahasiswa</h5>
                                     </div>
                                     <div class="col-3"></div>
                                 </div>    
@@ -105,7 +105,6 @@
                                 </tbody>
                             </table>
                             </div>
-                            <div style="float: right;"><a href="rekap_mahasiswa_pkl.php" style="text-decoration: underline;">Lihat Rekap Semua Angkatan</a></div>
                         </div>
                     </div>
                 </div>
