@@ -105,7 +105,6 @@
                                 </tbody>
                             </table>
                             </div>
-                            <div style="float: right;"><a href="rekap_mahasiswa_pkl.php" style="text-decoration: underline;">Lihat Rekap Semua Angkatan</a></div>
                         </div>
                     </div>
                 </div>
