@@ -114,8 +114,8 @@
                       <b>Dosen Wali : </b>
                         {{$dosen_wali[0]}}                  
                       <br>
-                      (<b>NIM:</b>
-                        {{$datamhs->nim}}) 
+                      <b>NIP:</b>
+                        {{$nipnimdoswal[0]}}
                     </div>
                   </div><br>
                   <ul class="list-inline text-center justify-content-center" >

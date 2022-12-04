@@ -65,6 +65,7 @@ class HomeController extends Controller
         ]);
         //make variable to return teh value ofdosen_wali where user name = nama 
         $dosen_wali = Mahasiswa::select('dosen_wali')->where('nama',Auth::user()->name)->pluck('dosen_wali');
+        $nipnimdoswal = User::where('name',$dosen_wali)->pluck('nipnim');
         $datamhs = Mahasiswa::where('nama', Auth::user()->name)->first();
         $alamatmhs = Mahasiswa::select('alamat')->where('nama',Auth::user()->name)->pluck('alamat');
         $datauser = User::where('name', Auth::user()->name)->first();
@@ -74,7 +75,7 @@ class HomeController extends Controller
                 Alert::error('Gagal', 'Ubah data diri dan password anda');
                 return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
             else{
-            return view('homemhs', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs',));
+            return view('homemhs', compact('datas', 'jumlahmhs','jumlahskripsi','jumlahpkl','chart','chart_skripsi','chart_mahasiswa','dosen_wali','datamhs','nipnimdoswal'));
             }
         }
         //if role == doswal view home
