@@ -54,13 +54,13 @@
   
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Mahasiswa PKL</h1>
+      <h1>Status Mahasiswa</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard_operator.php"><b>Home</b></a></li>
           <li class="breadcrumb-item"><a href="{{route('home')}}">Dasbor</a></li>
-          <li class="breadcrumb-item"><a href="{{route('mahasiswa.status')}}">Mahasiswa status</a></li>
-          <li class="breadcrumb-item">Rekap Mahasiswa status</li>
+          <li class="breadcrumb-item"><a href="{{route('mahasiswa.status')}}">Status Mahasiswa</a></li>
+          <li class="breadcrumb-item">Rekap Status Mahasiswa</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
