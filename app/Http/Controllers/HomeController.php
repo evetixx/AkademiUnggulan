@@ -65,12 +65,14 @@ class HomeController extends Controller
         ]);
         //make variable to return teh value ofdosen_wali where user name = nama 
         $dosen_wali = Mahasiswa::select('dosen_wali')->where('nama',Auth::user()->name)->pluck('dosen_wali');
-        $nipnimdoswal = User::where('name',$dosen_wali)->pluck('nipnim');
+        
         $datamhs = Mahasiswa::where('nama', Auth::user()->name)->first();
         $alamatmhs = Mahasiswa::select('alamat')->where('nama',Auth::user()->name)->pluck('alamat');
         $datauser = User::where('name', Auth::user()->name)->first();
         //if role == mahasiswa view homemhs
         if(Auth::user()->role == 'mahasiswa'){
+
+            $nipnimdoswal = User::where('name',$dosen_wali)->pluck('nipnim');
             if (Hash::check($datamhs->nim,$datauser->password)){
                 Alert::error('Gagal', 'Ubah data diri dan password anda');
                 return redirect()->route('profile')->with('status', 'Tolong Rubah datadiri dan password anda');}
